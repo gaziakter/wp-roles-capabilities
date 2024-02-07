@@ -1,0 +1,1 @@
+# wp-roles-capabilities
