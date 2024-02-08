@@ -31,11 +31,14 @@ add_action( 'wp_ajax_roles_display_result', function () {
         $task = $_POST['task'];
         if ( 'current-user-details' == $task ) {
             $user = wp_get_current_user();
-            echo $user->user_email . "<br/>";
-            if ( is_user_logged_in() ) {
-                echo "Someone is logged in<br/>";
+            $username = $user->display_name;
+            if(is_user_logged_in(  )){
+                echo 'Hello '. $username. '!';
+
+
+                echo"<br/>";
             }
-            print_r( $user );
+            //print_r( $user );
         } 
     }
     die( 0 );
