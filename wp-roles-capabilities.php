@@ -38,8 +38,13 @@ add_action( 'wp_ajax_roles_display_result', function () {
 
                 echo"<br/>";
             }
+
             //print_r( $user );
-        } 
+        } elseif ( 'any-user-detail' == $task ) {
+            $user = New WP_User( 2 );
+            $username = $user->display_name;
+            echo "Our Another is: ".$username;
+            }  
     }
     die( 0 );
 } );
