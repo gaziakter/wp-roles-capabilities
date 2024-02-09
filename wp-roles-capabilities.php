@@ -54,7 +54,9 @@ add_action( 'wp_ajax_roles_display_result', function () {
 
         }   elseif ( 'all-roles' == $task ) {
             global $wp_roles;
-            foreach( $wp_roles->roles as $role => $roledetails){
+            $role_name = $wp_roles->roles;     
+
+            foreach( $role_name as $role => $roledetails){
                 echo  "{$role} </br>";
             }
 
