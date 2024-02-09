@@ -59,6 +59,20 @@ add_action( 'wp_ajax_roles_display_result', function () {
             foreach( $role_name as $role => $roledetails){
                 echo  "{$role} </br>";
             }
+            print_r($wp_roles);
+
+        }  elseif ( 'current-capabilities' == $task ) {
+
+                if(is_user_logged_in(  )){
+                    $current_user = wp_get_current_user(  );
+                    $capability =  $current_user->allcaps;
+                    foreach($capability as $cap => $value){
+                        echo $cap .'</br>';
+
+                    }
+                }
+
+             //print_r( $current_user->allcaps);
 
         } 
     }
