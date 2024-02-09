@@ -44,14 +44,21 @@ add_action( 'wp_ajax_roles_display_result', function () {
             $user = New WP_User( 2 );
             $username = $user->display_name;
             echo "Our Another is: ".$username;
+
         }  elseif ( 'current-role' == $task ) {
             $user = New WP_User(1);
             $userrole = $user->roles;
-           
             foreach($userrole as $role){
                 echo "This is user role: ".$role;
             }
-        }  
+
+        }   elseif ( 'all-roles' == $task ) {
+            global $wp_roles;
+            foreach( $wp_roles->roles as $role => $roledetails){
+                echo  "{$role} </br>";
+            }
+
+        } 
     }
     die( 0 );
 } );
