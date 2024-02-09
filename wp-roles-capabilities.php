@@ -90,6 +90,15 @@ add_action( 'wp_ajax_roles_display_result', function () {
             
         }
 
+        elseif ( 'users-by-role' == $task ) {
+
+            $blogusers = get_users( array( 'role__in' => array( 'author', 'subscriber' ) ) );
+            // Array of WP_User objects.
+            foreach ( $blogusers as $user ) {
+                echo '<span>' . esc_html( $user->display_name ) . '</span> </br>';
+            }
+             
+         }
     }
     die( 0 );
 } );
