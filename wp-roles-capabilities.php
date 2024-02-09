@@ -80,6 +80,15 @@ add_action( 'wp_ajax_roles_display_result', function () {
             echo $create_user;
             
         }
+        
+        elseif ( 'set-role' == $task ) {
+
+           $user = New WP_User(3);
+            $user->remove_role( 'subscriber' );
+            $user->add_role( 'author' );
+            print_r($user);
+            
+        }
 
     }
     die( 0 );
