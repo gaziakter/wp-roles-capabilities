@@ -99,6 +99,38 @@ add_action( 'wp_ajax_roles_display_result', function () {
             }
              
          }
+
+         elseif ( 'users-by-role' == $task ) {
+
+            $blogusers = get_users( array( 'role__in' => array( 'author', 'subscriber' ) ) );
+            // Array of WP_User objects.
+            foreach ( $blogusers as $user ) {
+                echo '<span>' . esc_html( $user->display_name ) . '</span> </br>';
+            }
+             
+         }
+
+         elseif ( 'create-role' == $task ) {
+            /* $role = add_role('super_author',__('Super Author','roles-demo'),[
+            'read'=>true,
+            'delete_posts'=>true,
+            'edit_posts'=>true,
+            'custom_cap_one'=>true,
+            'custom_cap_two'=>false
+            ]);
+            print_r($role);*/
+            $user = new WP_User( 3 );
+            $user->add_role( 'super_author' );
+            if ( $user->has_cap( 'custom_cap_one' ) ) {
+                echo "Jane can do custom_cap_one<br/>";
+            }
+
+            if ( !$user->has_cap( 'custom_cap_two' ) ) {
+                echo "Jane can not do custom_cap_two<br/>";
+            }
+            print_r( $user );
+
+        }
     }
     die( 0 );
 } );
