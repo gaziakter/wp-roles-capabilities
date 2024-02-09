@@ -74,7 +74,13 @@ add_action( 'wp_ajax_roles_display_result', function () {
 
              //print_r( $current_user->allcaps);
 
-        } 
+        } elseif ( 'create-user' == $task ) {
+
+            $create_user = wp_create_user('adilfayar', '12345d678', 'htisjdddkfn@gmai;.com' );
+            echo $create_user;
+            
+        }
+
     }
     die( 0 );
 } );
